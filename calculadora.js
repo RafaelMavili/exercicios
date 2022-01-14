@@ -69,4 +69,29 @@ const selecionarOperador = (evento) => {
 
 operadores.forEach(operador => operador.addEventListener('click', selecionarOperador));
 
-document.getElementById('igual').addEventListener('click', calcular);
+
+const ativarIgual = () => {
+    calcular();
+    //zerar operador para evitar refazer conexao
+    operador = undefined;
+}
+
+document.getElementById('igual').addEventListener('click', ativarIgual);
+
+const limparDisplay = () => display.textContent = '';
+
+document.getElementById('limparDisplay').addEventListener('click', limparDisplay);
+
+const limparCalculo = () => {
+    limparDisplay();
+    operador = undefined;
+    novoNumero = true;
+    numeroAnterior = undefined;
+}
+
+document.getElementById('limparCalculo').addEventListener('click', limparCalculo);
+
+//metodo para array
+const removerUltimoCaractere = () => display.textContent = display.textContent.slice(0, -1);
+
+document.getElementById('backspace').addEventListener('click', removerUltimoCaractere);
